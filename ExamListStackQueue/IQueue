@@ -1,0 +1,9 @@
+#ifndef UNTITLED1_IQUEUE_H
+#define UNTITLED1_IQUEUE_H
+class IQueue {
+public:
+    virtual void push(int value) = 0;
+    virtual int pop() = 0;
+    virtual bool contains(int value) = 0;
+};
+#endif //UNTITLED1_IQUEUE_H
