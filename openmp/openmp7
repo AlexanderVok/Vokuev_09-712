@@ -1,0 +1,29 @@
+#include "pch.h"
+#include <iostream>
+#include <omp.h>
+#include <stdio.h>
+
+const int DIGIT = 12;
+int main() {
+
+	int a[DIGIT], b[DIGIT], c[DIGIT];
+#pragma omp parallel num_threads(3)
+	{
+#pragma omp for schedule(static, 4)
+		for (int i = 0; i < DIGIT; i++) {
+			a[i] = i * 2;
+			b[i] = i * 3;
+			printf("working %d of %d threads iteration %d a=%d, b=%d\n",omp_get_thread_num(), omp_get_num_threads(), i, a[i], b[i]);
+		}
+	}
+	printf("\n\n");
+	
+#pragma omp parallel num_threads(4)
+	{
+#pragma omp for schedule(dynamic, 3)
+		for (int i = 0; i < DIGIT; i++) {
+			c[i] = a[i] + b[i];
+			printf("working %d of %d threads iteration %d c=%d \n", omp_get_thread_num(), omp_get_num_threads(), i, c[i]);
+		}
+	}
+}
