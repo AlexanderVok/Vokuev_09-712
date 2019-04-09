@@ -1,0 +1,67 @@
+// ConsoleApplication8.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
+
+#include "pch.h" 
+#include <iostream> 
+#include <omp.h> 
+#include <stdio.h> 
+#include <iomanip> 
+using namespace std;
+int main()
+{
+	int n, k;
+	cin >> n >> k;
+	int i, j;
+	int** matrix;
+	int*vector;
+	matrix = new int*[n];
+	for (i = 0; i < n; i++) {
+		matrix[i] = new int[k];
+	}
+	vector = new int[]
+		
+	
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < k; j++)
+		{
+			cout << "Inter element " << "[" << i << "][" << j << "] ";
+			cin >> matrix[i][j];
+		}
+	}
+	 
+	cout << std::endl; 
+
+	for (i = 0; i < n; i++) 
+	 for (j = 0; j < k; j++) 
+	 { 
+	 if (j % k == 0) 
+	 cout << endl; 
+	 cout << setw(3) << matrix[i][j]; 
+	 } 
+	cout << std::endl; 
+
+//#pragma omp parallel num_threads(2) 
+//	{
+//#pragma omp for schedule(static, 2) 
+//		for (i = 0; i < n; i++)
+//			for (j = 0; j < k; j++)
+//			{
+//				printf("enter [%d][%d]", i, j);
+//				cin >> matrix[i][j];
+//			}
+//		printf("\n");
+//		for (i = 0; i < n; i++) {
+//			for (j = 0; j < k; j++)
+//			{
+//				if (j % k == 0) {
+//					printf("\n");
+//				}
+//
+//				printf("%d ", matrix[i][j]);
+//			}
+//		}
+//		printf("\n");
+//	}
+	system("pause");
+	return 0;
+}
